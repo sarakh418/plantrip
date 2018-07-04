@@ -1,0 +1,19 @@
+<li id="post<%= post.id %>"" class="post-list">
+	<p class="post-content">Title : <%= post.title%></p>
+	<p class="post-content">Content : <%= post.content%></p>
+	<p class ="post-user">
+		<small>
+
+			By <%= post.user.email %>
+			at <%= post.created_at.to_date %>
+	
+
+		</small>
+	</p>
+	<p>
+   <% if current_user == post.user %>
+	<%= link_to "Delete", post_destroy_path(post.id),  :method => 'delete',remote: true %> -
+	<%= link_to "Edit", edit_post_path(post.id),  :method => 'get' %>
+    <% end %>
+	</p>
+</li>
